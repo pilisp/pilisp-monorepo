@@ -1,0 +1,15 @@
+# Read about `build.yaml` at https://pub.dev/packages/build_config
+builders:
+  pilisp_native_dart:
+    import: "package:pilisp_native/builder.dart"
+    builder_factories: [ "piLispNativeDartLibraryBuilder" ]
+    build_extensions: { ".dart": [ ".stub.dart" ] }
+    # auto_apply: dependents
+    build_to: source
+    applies_builders: [ "source_gen" ]
+targets:
+  $default:
+    builders:
+      pilisp_native|pilisp_native_dart:
+        generate_for:
+          - lib/src/pilisp_native_impl.dart # Used only for the file name

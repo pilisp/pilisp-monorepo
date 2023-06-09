@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+OUTPUT_NAME="${1:-pl}"
+
+mkdir -p build
+dart compile exe -o "build/$OUTPUT_NAME" ./bin/cli.dart

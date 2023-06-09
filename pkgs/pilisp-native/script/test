@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -eu
+
+echo '[TEST] Running Dart test suite...'
+dart test
+echo '[BUILD] Building native executable...'
+./script/compile
+echo '[TEST] Running PiLisp Native test suite...'
+./build/pl load --file test/pilisp_native_test.pil
+echo '[TEST] Running examples...'
+dart run example/pilisp_native_example.dart

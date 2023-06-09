@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -eu
+
+OUTPUT_NAME="${1:-pl}"
+
+echo '[1/2] Compiling pilisp-core to a standalone executable...'
+( cd pkgs/pilisp-core && ./script/compile "$OUTPUT_NAME" )
+
+echo ''
+echo '[2/2] Compiling pilisp-native to a standalone executable...'
+( cd pkgs/pilisp-native && ./script/compile "$OUTPUT_NAME" )
+
+echo '[INFO] Copying executables to top-level build folder...'
+rm -rf build/*
+mkdir -p build
+cp "pkgs/pilisp-core/build/$OUTPUT_NAME"   "build/$OUTPUT_NAME-core"
+cp "pkgs/pilisp-native/build/$OUTPUT_NAME" "build/$OUTPUT_NAME-native"

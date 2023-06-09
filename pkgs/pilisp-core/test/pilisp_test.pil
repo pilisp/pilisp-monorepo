@@ -1,0 +1,117 @@
+;; -*- mode: pilisp -*-
+(defmulti length {:doc "Returns the length of a value."} type)
+
+(defmethod length vector
+  [v]
+  (count v))
+
+(defmethod length map
+  [m]
+  (count m))
+
+(defmulti  default-length {} type)
+(defmethod default-length vector [v] (count v))
+(defmethod default-length :default [x] [(type x) (count x)])
+
+(defn test-multi-methods
+  {:test true}
+  []
+  (test/with-group "Implemented methods"
+    (test/is= 4 (length [1 2 3 4]))
+    (test/is= 2 (length {1 2 3 4}))
+    (test/is= 2 (count (methods length))))
+
+  (test/with-group "Unimplemented methods"
+    (test/throws (length "nope")))
+
+  (test/with-group "Removing methods"
+    (remove-method length 'vector)
+    (test/throws (length [1 2 3 4]))
+    (test/is= 1 (count (methods length))))
+
+  (test/with-group "Default methods"
+    (test/is= 4 (default-length [1 2 3 4]))
+    (test/is= ['map 2] (default-length {1 2 3 4}))))
+
+(defn test-map
+  {:test true}
+  []
+  (test/is= [3 4 5 6] (map dec [4 5 6 7]))
+  (test/is= [9 10 11 12] (map inc [8 9 10 11])))
+
+(defn test-assoc
+  {:test true}
+  []
+  (test/is= {.a .b}       (assoc {} .a .b))
+  (test/is= {.a .b .c .d} (assoc {} .a .b .c .d))
+  (test/is= {.a .b .c .z} (assoc {.a .b .c .d} .c .z))
+  (test/is= [0 .a]        (assoc [0 1] 1 .a))
+  (test/is= [.a 1]        (assoc [0 1] 0 .a))
+  (test/is= [.a]          (assoc [] 0 .a))
+  (test/is= [.a .b]       (assoc [.a] 1 .b))
+  (test/throws (= [] (assoc [] 1 .b))))
+
+(defn test-pl
+  {:test true}
+  []
+  (test/is= 4
+            (pl> [0 1 2 3 4 5 6 7 8 9] | map (partial * 3) | filter even? | last | | / $ 6)))
+
+(defn test-reduce
+  {:test true}
+  []
+  (let [product (fn [product n] (* product n))]
+    (test/with-group "Reduce"
+      (test/is= 15 (reduce + [1 2 3 4 5]))
+      (test/is= 15 (reduce + 0 [1 2 3 4 5]))
+      (test/is= 20 (reduce + 5 [1 2 3 4 5]))
+      (test/is= 120 (reduce product [1 2 3 4 5]))
+      (test/is= 0 (reduce product 0 [1 2 3 4 5]))
+      (test/is= 600 (reduce product 5 [1 2 3 4 5])))))
+
+(defn test-rem
+  {:test true}
+  []
+  (test/with-group "Arithmetic"
+    (test/is= 1 (rem 6 5))))
+
+(defn test-dart-iterable-class
+  {:test true}
+  []
+  (test/with-group "Iterable.join"
+    (test/is= "abc" (dart/Iterable.join (to-dart-list ['a 'b 'c])))
+    (test/is= "a, b, c" (dart/Iterable.join-full (to-dart-list ['a 'b 'c]) ", "))))
+
+(defn test-string-functions
+  {:test true}
+  []
+  (test/with-group "String functions"
+    (test/is= true (str/blank? nil))
+    (test/is= true (str/blank? ""))
+    (test/is= true (str/blank? " "))
+    (test/is= true (str/blank? " \t \n  \r \t     \r\n"))
+    (test/is= true (not (str/blank? " \t pilisp  \n\n")))))
+
+(def core-pilisp-tests
+  (reduce
+   (fn [acc binding]
+     (let [{:keys [value meta]} binding]
+       (if (:test meta)
+         (conj acc value)
+         acc)))
+   []
+   (vals (bindings))))
+
+(defn run-core-pilisp-tests []
+  (map (fn tester [f] (f)) core-pilisp-tests))
+
+(run-core-pilisp-tests)
+(println (test/suite-report))
+(let [report (deref test/suite)
+      {:keys [fail error]} report
+      exit-fail? (or (> (count fail) 0)
+                     (> (count error) 0))]
+  (test/suite-reset)
+  (if exit-fail?
+    (throw (ex-info "Tests failed. See report above."))
+    :all-tests-pass))

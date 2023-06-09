@@ -1,0 +1,9 @@
+#!/usr/bin/env pl -l
+
+(defn main [& args]
+  (println "Compiled, you passed in" (count args) "command-line arguments:"
+           (str/join ", " args)))
+
+(when (pl/script?)
+  (println "Scripted, you passed in" (count *command-line-args*) "command-line arguments:"
+           (str/join ", " *command-line-args*)))

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -eu
+
+echo '[1/3] Cleaning pilisp-cli...'
+( cd pkgs/pilisp-cli && ./script/clean )
+
+echo ''
+echo '[2/3] Cleaning pilisp-core...'
+( cd pkgs/pilisp-core && ./script/clean )
+
+echo ''
+echo '[3/3] Cleaning pilisp-native...'
+( cd pkgs/pilisp-native && ./script/clean )
