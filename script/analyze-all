@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -eu
+
+echo '[1/4] Running dart analyze for pilisp-core...'
+(cd pkgs/pilisp-core && dart analyze )
+
+echo ''
+echo '[2/4] Running dart analyze for pilisp-cli...'
+(cd pkgs/pilisp-cli && dart analyze )
+
+echo ''
+echo '[3/4] Running dart analyze for pilisp-native...'
+(cd pkgs/pilisp-native && dart analyze )
+
+echo ''
+echo '[3/4] Running dart analyze for pilisp-web...'
+(cd pkgs/pilisp-web && dart analyze )
