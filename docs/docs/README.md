@@ -4,7 +4,7 @@ PiLisp—An interpreted Lisp inspired by Clojure, implemented in Dart.
 
 The language implemented in [pilisp-core] runs on all targets that Dart supports.
 
-## Quick Taste
+## Appetizer
 
 ```clojure
 (println "Hello world!")
