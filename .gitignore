@@ -1,2 +1,5 @@
+# Dart build output
+build
+
 # Python virtual environment for documentation tooling
 .docs-env
