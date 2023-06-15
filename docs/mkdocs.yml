@@ -1,0 +1,39 @@
+site_name: PiLisp
+theme:
+  name: material
+  features:
+    - navigation.top
+    - toc.follow
+    - toc.integrate
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: "#"
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+nav:
+  - Welcome: 'README.md'
+  - Tour: 'tour.md'
+  - Installation : 'install.md'
+  - Usage:
+    - REPL: 'usage/repl.md'
+    - 'CLI Commands': 'usage/cli.md'
+    - Embedded: 'usage/embedded.md'
+  - Tutorials:
+    - 'HTTP Client': 'tutorials/http.md'
+  - 'PiLisp for Dart Developers':
+    - 'Asynchronous Programming': 'for-dart-devs/asynchronous.md'
+    - 'Calling Dart Code from PiLisp': 'for-dart-devs/calling-dart.md'
+    - 'Calling PiLisp Code from Dart': 'for-dart-devs/calling-pilisp.md'
+  - 'PiLisp for Clojure Developers':
+    - 'Comparison of Clojure & PiLisp': 'for-clojure-devs/comparison.md'
+# # This introduces an unacceptable slow-down of the rendering.
+# extra_javascript:
+#    - javascripts/pilisp.dart.js
+

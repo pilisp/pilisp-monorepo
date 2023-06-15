@@ -1,6 +1,6 @@
 # PiLisp
 
-PiLisp—An interpreted Lisp inspired by Clojure.
+PiLisp—An interpreted Lisp inspired by Clojure, implemented in Dart.
 
 Runs on all supported Dart targets.
 
@@ -9,6 +9,16 @@ Runs on all supported Dart targets.
 ## Repository
 
 This repository is a monorepo for all of the language-adjacent projects that comprise PiLisp.
+
+### `.github/`
+
+Definitions for workflows used for automated testing and releases of PiLisp.
+
+### `docs/`
+
+Longer-form documentation is recorded in this folder using the Python tool `mkdocs`.
+
+For API documentation specific to a package, run `dart doc` from the appropriate sub-folder.
 
 ### `pkgs/`
 

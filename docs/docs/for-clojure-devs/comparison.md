@@ -11,14 +11,15 @@ PiLisp's immutable data structures are backed by the
 [fast_immutable_collections] library, not Clojure's implementations.
 
 The Dart VM does not support multiple threads of execution. For this reason,
-PiLisp does not have any of Clojure's concurrency features. Use `volatile!` or
-the state-related functions.
+PiLisp does not have any of Clojure's concurrency features. The `atom` in PiLisp
+is equivalent to a Clojure `volatile`.
 
 The [dart:mirrors] library can only be used when running Dart programs via the
 Dart VM. For this reason, the core PiLisp language does not integrate it, and
 thus cannot provide ad hoc Dart reflection. The core PiLisp implementation does,
-however, generate PiLisp stubs for many Dart Core classes and methods. See
-PiLisp forms that start with `dart/`.
+however, generate PiLisp stubs for many Dart Core classes and methods. Evaluate
+`(apropos-full "dart/")` or review the [generated Dart code][core-stub] to see
+what is available.
 
 PiLisp calls keywords _terms_ and supports writing them either with a
 leading colon or a leading dot, i.e. `.a` is equivalent to `:a`. Terms
@@ -28,9 +29,10 @@ Destructuring is a powerful tool of thought. PiLisp supports destructuring in
 `let` bindings. By design, it does not support them in function signatures.
 
 PiLisp metadata is supported only on top-level bindings. Use `bindings` to get a
-map of all available bindings.
+map of symbols to maps of metadata and the bound value.
 
 
 <!-- Links -->
+[core-stub]: https://github.com/pilisp/pilisp-monorepo/main/tree/pkgs/pilisp-core/lib/src/pilisp_core.stub.dart
 [dart:mirrors]: https://api.dart.dev/stable/2.19.1/dart-mirrors/dart-mirrors-library.html
 [fast_immutable_collections]: https://pub.dev/documentation/fast_immutable_collections/latest/fast_immutable_collections/fast_immutable_collections-library.html

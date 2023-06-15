@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+if $PILISP_LOCAL_DEV ; then source "$(dirname "$0")/../../.docs-env/bin/activate" ; fi
+
+type mkdocs || python3 -m pip install mkdocs
+python3 -m pip install --requirement "$(dirname "$0")/../requirements.txt"
