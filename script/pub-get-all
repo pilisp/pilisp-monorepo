@@ -2,13 +2,17 @@
 
 set -eu
 
-echo '[1/3] Running dart pub get for pilisp-core...'
+echo '[1/4] Running dart pub get for pilisp-core...'
 (cd pkgs/pilisp-core && dart pub get )
 
 echo ''
-echo '[2/3] Running dart pub get for pilisp-cli...'
+echo '[2/4] Running dart pub get for pilisp-cli...'
 (cd pkgs/pilisp-cli && dart pub get )
 
 echo ''
-echo '[3/3] Running dart pub get for pilisp-native...'
+echo '[3/4] Running dart pub get for pilisp-native...'
 (cd pkgs/pilisp-native && dart pub get )
+
+echo ''
+echo '[4/4] Running dart pub get for pilisp-web...'
+(cd pkgs/pilisp-web && dart pub get )
