@@ -27,6 +27,7 @@ For API documentation specific to a package, run `dart doc` from the appropriate
 |`pilisp-cli`|The command-line interface shared by `pilisp`, `pilisp-native`|
 |`pilisp-core`|Core, cross-platform PiLisp implementation|
 |`pilisp-native`|Extension to `pilisp` for compilation to native executables, able to leverage more of Dart that is platform-specific|
+|`pilisp-web`|Example of compiling a PiLisp program to JavaScript|
 
 ## License
 
