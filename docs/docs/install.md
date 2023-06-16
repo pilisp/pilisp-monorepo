@@ -17,6 +17,13 @@ Download a standalone executable for your platform from GitHub:
     sudo spctl --global-enable
     ```
 
+## Editor Integration
+
+The only supported editor at this point is Emacs. See these repositories:
+
+* [pilisp/emacs-pilisp-mode] for an Emacs mode derived from `clojure-mode`
+* [pilisp/emacs-inf-pilisp] to use PiLisp with Emacs' inferior lisp mode, derived from `inf-clojure`
+
 ## Dart Library
 
 Locally, you can read the README.md file for each package in the
@@ -28,3 +35,6 @@ released by the official pilisp.dev publisher:
 
 [Official PiLisp Packages on pub.dev](https://pub.dev/publishers/pilisp.dev/packages)
 
+<!-- Links -->
+[pilisp/emacs-pilisp-mode]: https://github.com/pilisp/emacs-pilisp-mode
+[pilisp/emacs-inf-pilisp]: https://github.com/pilisp/emacs-inf-pilisp
