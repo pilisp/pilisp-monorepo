@@ -1,6 +1,21 @@
-## (WIP) v1.0.0-alpha.13
+## v1.0.0-alpha.13
 
-* Latest pilisp_cli, including new `compile` command and changes to `load` and `eval` commands
+* First release from https://github.com/pilisp/pilisp-monorepo
+   * The coordination overhead of dependencies between pilisp,
+     pilisp-native, and pilisp-cli was too high.
+* Latest pilisp_cli, including new `compile` command and changes to
+  `load` and `eval` commands
+* String values are now invocable, act like terms
+* Proper PiLisp stack traces can now be printed; Dart stack traces
+  optional.
+* `PiLisp.logEvalException` for printing exceptions with stacktraces
+* `http/default-headers`
+* Make `atom` along with `swap!` and `reset!` aliases for the
+  equivalent `state` functions.
+* `count` now uses `.length` where possible, rather than `seq`ing
+  everything
+* Bug fix: `sort` on `nil` or empty now returns `[]`
+* Removed: transients (poorly implemented, not faster)
 
 ## v1.0.0-alpha.12
 
