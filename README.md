@@ -29,6 +29,11 @@ For API documentation specific to a package, run `dart doc` from the appropriate
 |`pilisp-native`|Extension to `pilisp` for compilation to native executables, able to leverage more of Dart that is platform-specific|
 |`pilisp-web`|Example of compiling a PiLisp program to JavaScript|
 
+You can build a standalone executable for `pilisp-core` or
+`pilisp-native` by running the `script/compile` script within their
+respective folders, or by running the `script/compile-all` script at
+the root of this repository. See `build` folders for output.
+
 ## License
 
 See the LICENSE files of each project for licensing information.
