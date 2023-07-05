@@ -1,6 +1,6 @@
 name: pilisp_native
 description: A starting point for Dart libraries or applications.
-version: 1.0.0
+version: 1.0.0-alpha.13
 repository: https://github.com/pilisp/pilisp-monorepo/tree/main/pkgs/pilisp-native
 
 environment:
