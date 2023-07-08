@@ -4,7 +4,7 @@ version: 1.0.0-alpha.15
 repository: https://github.com/pilisp/pilisp-monorepo/tree/main/pkgs/pilisp-cli
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=2.18.0 <4.0.0'
 
 dependencies:
   args: ^2.4.0
