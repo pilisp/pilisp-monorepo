@@ -1,3 +1,10 @@
+## v1.0.0-alpha.15
+
+* Adds `--source-only` option to `compile exe` command
+* Supports targeting either pilisp (core) or pilisp_native
+* Better compilation failure reporting
+* Use new public method for logging exceptions during PiLisp eval
+
 ## v1.0.0-alpha.14
 
 * Adds `compile` command.

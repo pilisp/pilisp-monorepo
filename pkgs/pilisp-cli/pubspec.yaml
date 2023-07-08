@@ -1,6 +1,6 @@
 name: pilisp_cli
 description: Shared code for running a command-line interface to the PiLisp programming language.
-version: 1.0.0-alpha.14
+version: 1.0.0-alpha.15
 repository: https://github.com/pilisp/pilisp-monorepo/tree/main/pkgs/pilisp-cli
 
 environment:
