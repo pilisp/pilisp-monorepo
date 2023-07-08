@@ -1,5 +1,7 @@
 PiLisp—An interpreted Lisp inspired by Clojure.
 
+> Alpha. Much works, much may change.
+
 The PiLisp Native project is an extension of [core PiLisp][pilisp] that takes
 advantage of features and packages available only for Dart's native compilation
 target.
@@ -8,37 +10,82 @@ This is the `pilisp_native` package on pub.dev.
 
 ## Features
 
-Beyond the features of core PiLisp, Pilisp Native includes:
+See the definitions in the [`pilisp_native_pilisp.dart`][pilisp-native-pilisp]
+for core PiLisp definitions that are (re)defined in this package.
 
-- `io/stdout`, `io/stderr`, and `io/stdin`
-- `future/wait-for` for blocking until a future completes
-- `sleep` for pausing execution
-- `slurp` for reading a file to a string
-- `spit` for writing a string to a file
-
-## Getting started
-
-- [Download a release][releases] for standalone CLI usage.
-- `dart pub add pilisp_native` to add as a library to your Dart project.
+This is the `pilisp` package on pub.dev.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+* [Download a release][releases] for standalone CLI usage.
+* `dart pub add pilisp` to add as a library to your Dart project.
+
+For CLI use, download the latest release for your platform and run the `pl`
+executable.
+
+```shell
+$ pl
+pl>
+```
+
+Run the `help` command for all options:
+
+```shell
+$ pl help
+Run a PiLisp REPL, or try the subcommands for more options.
+
+Usage: pl <command> [arguments]
+
+Global options:
+-h, --help    Print this usage information.
+
+Available commands:
+  eval   Evaluate PiLisp code passed as arguments.
+  load   Load PiLisp code saved in files.
+  repl   Start a PiLisp REPL.
+
+Run "pl help <command>" for more information about a command.
+```
+
+For use in your Dart programs, `PiLisp.loadString` will read and evaluate
+program source:
 
 ```dart
-const like = 'sample';
+PiLisp.loadString('(+ 1 2 3 4)');
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+* [TODO PiLisp Language Tour][tour]
+* [PiLisp Core Implementation][pilisp-core]
+* [PiLisp Core Tests][pilisp-tests]
+* [TODO Embedding PiLisp in Dart Programs][embedding]
+* [pilisp-native] that takes advantage of host facilities (e.g., `dart:io`)
+* [pilisp-web] that compiles to JavaScript targeting the Web
+
+The name "PiLisp" was originally a shortened form of "Piped Lisp," because a
+first prototype of this language was developed while building [a REPL
+](https://github.com/semperos/shortcut-repl) for the Shortcut project management
+SaaS product that included a rudimentary Lisp whose defining feature was use of
+the pipe character `|` as an equivalent of Clojure's thread-first macro `->`.
+
+## Build
+
+1. Clone this repository
+1. Run `dart pub get`
+1. Run `./script/compile`
+
+## Acknowledgements
+
+Initial implementation of the reader was based on [ClojureDart's reader.cljd](https://github.com/Tensegritics/ClojureDart/blob/8a1b9ba5096bd88ae17a5960d9c3a20bebabfefd/clj/src/cljd/reader.cljd) licensed under the Eclipse Public License (EPL-1.0).
+
+A rewrite of the reader was adapted from [dlox's scanner.dart](https://github.com/BertrandBev/dlox/blob/2879b46c1bda66c9e35291e0e42899ebeb01e54f/lib/scanner.dart) licensed under the MIT License.
+
+Much of PiLisp's implementation (both Dart and PiLisp code) was copied and adapted directly from the Java and Clojure source code in the [Clojure project](https://github.com/clojure/clojure) licensed under the Eclipse Public License (EPL-1.0).
 
 ## License
 
-Copyright © Daniel Gregoire 2023
+Copyright © Daniel Gregoire 2022–2023
 
 [Eclipse Public License - v 2.0](https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt)
 
@@ -48,5 +95,12 @@ Copyright © Daniel Gregoire 2023
 
 
 <!-- Links -->
-[pilisp]: https://github.com/pilisp/pilisp
-[releases]: https://github.com/pilisp/pilisp-native/releases
+
+[embedding]: https://pilisp.dev/usage/embedded/
+[pilisp-core]: https://github.com/pilisp/pilisp-monorepo/tree/main/pkgs/pilisp-core/lib/src/pilisp_core_pilisp.dart
+[pilisp-native]: https://github.com/pilisp/pilisp-monorepo/tree/main/pkgs/pilisp-native
+[pilisp-org]: https://github.com/pilisp
+[pilisp-tests]: https://github.com/pilisp/pilisp-monorepo/tree/main/pkgs/pilisp-core/test/pilisp_test.dart
+[pilisp-web]: https://github.com/pilisp/pilisp-monorepo/tree/main/pkgs/pilisp-web
+[releases]: https://github.com/pilisp/pilisp-monorepo/releases
+[tour]: https://pilisp.dev/tour/
